@@ -1,0 +1,19 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    column-gap: normal;
+    align-items: center;
+}
+
+.searchbox{
+    margin:2rem 0rem;
+    padding:1rem;
+    width:35rem;
+    border-radius: 20px; /* change the value as needed */
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-style:dotted;
+    font-size: 1rem;
+}
