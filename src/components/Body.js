@@ -1,11 +1,14 @@
 import React from 'react'
 import {useState} from 'react';
-
+import "../styles/glassToggle.css"
+import NewBody from './NewBody';
 
 
 function Body() {
-
-const [isChecked, setIsChecked] = useState(false);
+  
+  const [isChecked, setIsChecked] = useState(false);
+  const [isChecked1, setIsChecked1] = useState(false);
+  const [isChecked2, setIsChecked2] = useState(false);
   
 const handleCheckboxChange = () => {
   setIsChecked(!isChecked);
@@ -16,7 +19,6 @@ var numericValue = isChecked ? 1 : 0;
 
 
 
-const [isChecked1, setIsChecked1] = useState(false);
   
 const handleCheckboxChange1 = () => {
   setIsChecked1(!isChecked1);
@@ -26,7 +28,6 @@ const handleCheckboxChange1 = () => {
         
   var numericValue1 = isChecked1 ? 1 : 0;
 
-  const [isChecked2, setIsChecked2] = useState(false);
   
   const handleCheckboxChange2 = () => {
     setIsChecked2(!isChecked2);
@@ -49,7 +50,7 @@ const handleCheckboxChange1 = () => {
             }
 
     var myjson = JSON.stringify(obj)
-
+//onsubmit function
   const onSubmit = () => {
     console.log(numericValue,numericValue1,numericValue2)
     console.log(myjson)
@@ -57,35 +58,8 @@ const handleCheckboxChange1 = () => {
 
   return (
     <div>
-      <form>
-        <h4>Select Symptoms:</h4>
-        <label>
-            <input
-            type="checkbox"
-            checked={isChecked}
-            onChange={handleCheckboxChange}
-            />
-            Symptom1
-        </label>
-        <label>
-            <input
-            type="checkbox"
-            checked={isChecked1}
-            onChange={handleCheckboxChange1}
-            />
-            Symptom2
-        </label>
-        <label>
-            <input
-            type="checkbox"
-            checked={isChecked2}
-            onChange={handleCheckboxChange2}
-            />
-            Symptom3
-        </label>
-        <input type="button" value="Submit" onClick={onSubmit}/>
-
-
+      <form class="container">
+        <NewBody/>
         {Object.keys(prediction_val).map((key, i) => (
         <p key={i}>
           <span>{key}</span>
