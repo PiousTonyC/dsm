@@ -9,7 +9,7 @@ const NewBody = () => {
 
   return (
     <div>
-      <Search/>
+      {/* <Search/> */}
     </div>
   )
 }
