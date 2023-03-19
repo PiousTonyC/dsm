@@ -2,19 +2,34 @@ import React,{useEffect,useState} from "react"
 import CheckBox from "./CheckBox";
 import "../styles/search.css"
 
-function Search() {
+function Search(props) {
+    const [selectedValues,setSelectedValues] =useState({})
     const [searchTerm, setSearchTerm] = useState("");
     const [searchResults, setSearchResults] = useState([]);
-    const [isChecked, setIsChecked] = useState(false);
+    // 
+    
     const [showCheckBoxes,setShowCheckBoxes] =useState(false)
+    const handleCheckboxChange = (event) => {
+        const { id, checked } = event.target;
+        setSelectedValues((prevState) => ({
+      ...prevState,
+      [id]: checked ? 1 : 0, // set value to 1 if checked, 0 otherwise
+    }));
+      };
+    console.log(selectedValues)
+    //handlesubmit for transfering the data to the backend once the submit button clicked
+    const handleSubmit = () => {
+        const checkboxArray = Object.values(selectedValues);
+        // send checkboxArray using axios
+      };
   
     const handleSearch = (event) => {
       setSearchTerm(event.target.value);
     };
   
-    const handleCheckbox = () => {
-      setIsChecked(!isChecked);
-    };
+    // const handleCheckbox = () => {
+    //   setIsChecked(!isChecked);
+    // };
     const handleSearchBarClick = ()=>{
         setShowCheckBoxes(!showCheckBoxes)
     }
@@ -53,9 +68,10 @@ function Search() {
             {searchResults.map((item) => (
               (showCheckBoxes && (
                 <div key={item.id}>
-                    <CheckBox label={item.value} disText={item.desc}/>
+                    <CheckBox onCheckboxChange={handleCheckboxChange} label={item.value} disText={item.desc}/>
                 </div>))
             ))}
+            <button className="submitbtn" onClick={handleSubmit}>Submit</button>
             </div>
           </div>
         )}
